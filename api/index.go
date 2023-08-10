@@ -5,7 +5,7 @@
 //go:build ignore
 // +build ignore
 
-package main
+package Main
 
 import (
 	"bufio"
@@ -114,7 +114,7 @@ func echo(w http.ResponseWriter, r *http.Request) {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("index.html")
+	t, err := template.ParseFiles("main.html")
 	if err != nil {
 		panic(err)
 	}
