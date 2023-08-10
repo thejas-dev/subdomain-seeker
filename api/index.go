@@ -125,7 +125,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func main() {
+func Main() {
 	flag.Parse()
 	log.SetFlags(0)
 	http.HandleFunc("/echo", echo)
