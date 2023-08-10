@@ -1,0 +1,331 @@
+h1{
+    color:red
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #100C08;
+    scroll-behavior: smooth;
+}
+
+
+
+body {
+    background: linear-gradient(to bottom, #000, #000, #1a0042);
+    background-attachment: fixed;
+    color: #0f0; /* Green text color */
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;  
+    backdrop-filter: blur(5px);
+    background-color: #4f4f4f41;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header-container{
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+}
+.header-container > span {
+    padding-top: 10px;
+    display: flex;
+}
+
+.header-container > span > p{
+    color:rgba(151, 151, 151, 0.573);
+    margin-left: 10px;
+}
+
+.heading {
+    font-size: 2em;
+    margin: 0;
+    color:aqua;
+    text-shadow: 0 0 10px rgb(99, 5, 69); /* Green text shadow */
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    opacity: 40%;
+    object-fit: cover;
+    z-index: 0;
+    inset: 0;
+}
+
+.main{
+    height: 100vh;
+    padding: 0;
+    width: 100%; 
+    scroll-behavior: smooth;
+    z-index: 10;
+}
+.container2{
+    z-index: 40;
+    width: auto;
+    display: flex;
+    margin-top: 60px;
+    align-items: start;
+    height:80vh;
+    gap: 10px;
+}
+
+.sub-text{
+    margin-top: 170px;
+    width: 50%;
+    color:rgb(224, 222, 222);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size:larger;
+    z-index: 40;
+    font-weight: normal;
+    font-family: monospace;
+    text-align: center;
+    filter: drop-shadow(2px 5px 13px rgb(47, 0, 255));
+}
+
+
+
+@media only screen and (max-width : 768px) {
+    .heading{
+        font-size: 1.5em;
+        margin-block-end: 0px;
+    }
+    .container2{
+        flex-direction: column;
+    }
+    .header-container{
+        align-items: start;
+        padding-bottom: 5px;
+    }
+    .header-container > span > p {
+        display: none;
+    }
+    .header-container > p{
+        font-size: medium;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+}
+
+.main-card{
+    width: 43% ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    height: 100%;
+    border: 1px solid gray;
+    border-radius: 20px;
+    backdrop-filter: blur(7px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgba(255, 255, 255, 0.123);
+    margin-top: 30px;
+}
+.main-card::-webkit-scrollbar {
+    display: none;
+}
+
+.card-head{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.687);
+    border-bottom: 1px solid gray;
+    overflow: hidden;
+}
+
+
+.input-container {
+    display: flex; 
+    padding: 5px 10px;
+    align-items: center; 
+    width: 90%;
+    margin: auto;
+    background-color: rgba(128, 128, 128, 0.21);
+    border-radius: 20px;
+    border: 1.5px solid rgb(121, 121, 121);
+}
+
+.input-container:focus-within {
+    border-color: #3b82f6; /* Change border color on focus */
+}
+
+
+.input-container i {
+    font-size: 20px; 
+}
+
+.card-input {
+    flex: 1; 
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 5px 10px;
+    color: white;
+    font-size: 16px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+    width: 100%;    
+    overflow-y: auto;
+}
+
+.card-item{
+    display: flex;
+    padding: 2px 0px;
+    border-bottom: 1px solid gray;
+    gap: 4px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.card-item:hover{
+    background-color: rgba(255, 255, 255, 0.053);
+}
+
+.card-item-subdomain{
+    font-size: medium;
+    font-family:'Courier New', Courier, monospace;
+    letter-spacing: 0.6px;
+    /* font-weight:; */
+    color: rgb(200, 198, 198);
+    padding: 0px 10px;
+    word-break: break-all;
+    width: 90%;
+}
+
+.card-item-status{
+    width: 10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    padding: 0px 10px;
+}
+
+.green{
+    color:rgb(0, 215, 0)
+}
+.red{
+    color:rgb(247, 0, 0)
+}
+.blue{
+    color:rgb(0, 186, 215)
+}
+
+@media only screen and (max-width : 768px) {
+    .main-card{
+        width: 95%;
+        min-height: 90vh;
+        margin-bottom: 100px;
+    }
+    .sub-text{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+    
+    /* .header-container > span{
+        padding-bottom: 5px;
+    } */
+   
+    .card-item-subdomain{
+        word-break: keep-all;
+        font-size: 15px;
+    }
+    .container2{
+        height: 100vh;
+    }
+}
+
+.blurIt{
+    color: rgb(113, 113, 113);
+}
+
+/* .fa-spin{
+    animation: spin 1s infinite linear;
+} */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.alertBox{
+    position: fixed;
+    width: 50%;
+    backdrop-filter: blur(10px);
+    left:0;
+    right: 0;
+    margin: auto;
+    top: -100%;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1.4px solid rgba(0, 169, 143, 0.824);
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.alertBox.show{
+    top:10px;
+}
+
+.alert-text{
+    color: white;
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+@media only screen and (max-width : 768px) {
+    .alertBox{
+        width: 80%;
+        text-align: start;
+    }
+}
