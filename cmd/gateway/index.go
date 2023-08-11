@@ -126,8 +126,8 @@ func home(w http.ResponseWriter, r *http.Request) {
 func main() {
 	flag.Parse()
 	log.SetFlags(0)
-	http.HandleFunc("/echo", echo)
-	http.HandleFunc("/", home)
+	http.HandleFunc("/api/echo", echo)
+	http.HandleFunc("/api/", home)
 	// mux := http.NewServeMux()
 	// mux.Handle("/static/", twhandler.New(http.Dir("static"), "static", twembed.New()))
 
