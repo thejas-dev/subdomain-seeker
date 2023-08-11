@@ -1,5 +1,5 @@
 [build]
-  command = "./build.sh"
+  command = "hmod a+x ./build.sh && ./build.sh"
   functions = "functions"
   publish = "public"
 
