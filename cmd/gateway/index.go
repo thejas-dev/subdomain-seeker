@@ -13,6 +13,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/carlmjohnson/feed2json"
 	"github.com/gorilla/websocket"
 )
 
@@ -22,7 +23,7 @@ type ResponseData struct {
 	StatusCode int    `json:"statusCode"`
 }
 
-var addr = flag.String("addr", ":8080", "http service address")
+var addr = flag.String("addr", "-1", "http service address")
 
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  4096,
@@ -127,10 +128,21 @@ func main() {
 	flag.Parse()
 	log.SetFlags(0)
 	http.HandleFunc("/api/echo", echo)
-	http.HandleFunc("/api/", home)
+	// http.Handle("/api/", home)
+	http.Handle("/api/feed", feed2json.Handler(
+		feed2json.StaticURLInjector("https://news.ycombinator.com/rss"), nil,
+		nil, nil, cacheControlMiddleware))
+
 	// mux := http.NewServeMux()
 	// mux.Handle("/static/", twhandler.New(http.Dir("static"), "static", twembed.New()))
 
 	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	log.Fatal(http.ListenAndServe(*addr, nil))
+}
+
+func cacheControlMiddleware(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "public, max-age=300")
+		h.ServeHTTP(w, r)
+	})
 }
