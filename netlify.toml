@@ -1,13 +1,13 @@
 [build]
   command = "chmod a+x ./build.sh && ./build.sh"
   functions = "functions"
-  publish = "public"
+  publish = "/"
 
 [build.environment]
   GO_IMPORT_PATH = "github.com/thejas-dev/subdomain-seeker.git"
   GO111MODULE = "on"
 
 [[redirects]]
-  from = "/"
+  from = "/*"
   to = "/:splat"
   status = 200
