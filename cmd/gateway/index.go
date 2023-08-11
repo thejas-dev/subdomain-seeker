@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"html/template"
 	"log"
 	"net"
 	"net/http"
@@ -110,23 +111,23 @@ func echo(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// func home(w http.ResponseWriter, r *http.Request) {
-// 	t, err := template.ParseFiles("main.html")
-// 	if err != nil {
-// 		panic(err)
-// 	}
+func home(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("main.html")
+	if err != nil {
+		panic(err)
+	}
 
-// 	err = t.Execute(w, "ws://"+r.Host+"/echo")
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// }
+	err = t.Execute(w, "ws://"+r.Host+"/echo")
+	if err != nil {
+		panic(err)
+	}
+}
 
 func main() {
 	flag.Parse()
 	log.SetFlags(0)
 	http.HandleFunc("/echo", echo)
-	// http.HandleFunc("/", home)
+	http.HandleFunc("/", home)
 	// mux := http.NewServeMux()
 	// mux.Handle("/static/", twhandler.New(http.Dir("static"), "static", twembed.New()))
 
