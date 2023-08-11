@@ -1,11 +1,4 @@
-// Copyright 2015 The Gorilla WebSocket Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
-//go:build ignore
-// +build ignore
-
-package Main
+package main
 
 import (
 	"bufio"
@@ -13,7 +6,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"html/template"
 	"log"
 	"net"
 	"net/http"
@@ -31,7 +23,13 @@ type ResponseData struct {
 
 var addr = flag.String("addr", ":8080", "http service address")
 
-var upgrader = websocket.Upgrader{} // use default options
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  4096,
+	WriteBufferSize: 4096,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
 
 func runTheTool(c *websocket.Conn, mt int, message []byte, ctx context.Context) {
 	file, err := os.Open("wordlists.txt")
@@ -112,23 +110,23 @@ func echo(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func home(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("main.html")
-	if err != nil {
-		panic(err)
-	}
+// func home(w http.ResponseWriter, r *http.Request) {
+// 	t, err := template.ParseFiles("main.html")
+// 	if err != nil {
+// 		panic(err)
+// 	}
 
-	err = t.Execute(w, "ws://"+r.Host+"/echo")
-	if err != nil {
-		panic(err)
-	}
-}
+// 	err = t.Execute(w, "ws://"+r.Host+"/echo")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// }
 
-func Main() {
+func main() {
 	flag.Parse()
 	log.SetFlags(0)
 	http.HandleFunc("/echo", echo)
-	http.HandleFunc("/", home)
+	// http.HandleFunc("/", home)
 	// mux := http.NewServeMux()
 	// mux.Handle("/static/", twhandler.New(http.Dir("static"), "static", twembed.New()))
 
