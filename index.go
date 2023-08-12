@@ -132,5 +132,5 @@ func main() {
 	// mux.Handle("/static/", twhandler.New(http.Dir("static"), "static", twembed.New()))
 
 	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	log.Fatal(http.ListenAndServe(*addr, nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
