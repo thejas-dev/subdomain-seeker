@@ -82,6 +82,9 @@ func runTheTool(c *websocket.Conn, mt int, message []byte, ctx context.Context) 
 			}
 		}
 	}
+
+	finishedMessage := []byte("finished")
+	c.WriteMessage(mt, finishedMessage)
 }
 
 func echo(w http.ResponseWriter, r *http.Request) {
