@@ -112,7 +112,7 @@ func echo(w http.ResponseWriter, r *http.Request) {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("main.html")
+	t, err := template.ParseFiles("index.html")
 	if err != nil {
 		panic(err)
 	}
@@ -130,7 +130,10 @@ func main() {
 	http.HandleFunc("/", home)
 	// mux := http.NewServeMux()
 	// mux.Handle("/static/", twhandler.New(http.Dir("static"), "static", twembed.New()))
-
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	// http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
